@@ -53,6 +53,7 @@ Responsibilities:
 Owned Domain Objects:
 
 * User
+* RefreshToken
 
 ---
 

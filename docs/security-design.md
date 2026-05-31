@@ -62,6 +62,21 @@ Recommended Expiration:
 
 * 30 Days
 
+Session Model:
+
+* Multiple active sessions are supported.
+
+Examples:
+
+* Phone
+* Laptop
+* Tablet
+
+Each device receives its own refresh token.
+
+Revoking one refresh token must not affect other active sessions.
+
+
 ---
 
 # Registration Security

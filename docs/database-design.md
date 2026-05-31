@@ -41,6 +41,36 @@ Indexes:
 * email
 
 ---
+# Refresh Token
+
+Purpose:
+
+Stores authenticated user sessions.
+
+Fields:
+
+* id (UUID, Primary Key)
+* user_id (UUID)
+* token
+* device_id
+* expires_at
+* revoked
+* created_at
+* updated_at
+
+Relationships:
+
+* Many Refresh Tokens belong to one User
+
+Indexes:
+
+* user_id
+* token
+
+Constraints:
+
+* token must be unique
+* token cannot be null
 
 # Income
 

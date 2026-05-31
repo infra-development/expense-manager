@@ -35,6 +35,29 @@ Relationships:
 
 ---
 
+# Refresh Token
+
+Represents an authenticated user session.
+
+Purpose:
+
+* Obtain new access tokens.
+* Support logout.
+* Support session revocation.
+* Support multiple device logins.
+
+Attributes:
+
+* Token Value
+* Device Identifier
+* Expiration Date
+* Revoked Flag
+
+Relationships:
+
+* Belongs to one User
+
+
 # Income
 
 Represents money received by a user.
@@ -236,6 +259,7 @@ Notes:
 # Domain Relationships
 
 User
+├── Refresh Tokens
 ├── Income Records
 ├── Expense Records
 ├── Categories
