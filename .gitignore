@@ -8,10 +8,12 @@ target/
 # IDE
 .idea/
 *.iml
-.vscode/
+.vscode
 .classpath
 .project
 .settings/
+.metals
+.bloop
 
 # OS
 .DS_Store
