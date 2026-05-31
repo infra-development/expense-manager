@@ -200,3 +200,5 @@ Examples:
 6. Test APIs using Postman.
 
 For step-by-step local setup instructions, see [local-development-setup.md](local-development-setup.md).
+
+For checklists, verification commands, and troubleshooting, see [development-environment-verification.md](development-environment-verification.md).

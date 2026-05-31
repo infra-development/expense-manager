@@ -97,6 +97,8 @@ Quick start:
 
 See [docs/local-development-setup.md](docs/local-development-setup.md) for full instructions.
 
+Verify your setup: [docs/development-environment-verification.md](docs/development-environment-verification.md).
+
 ---
 
 ## Cursor Rules

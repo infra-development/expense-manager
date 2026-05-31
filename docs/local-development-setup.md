@@ -2,7 +2,9 @@
 
 This guide explains how to run the Expense Manager backend on your machine using Docker for PostgreSQL and Spring Boot on the host.
 
-For required tool versions and recommendations, see [development-environments.md](development-environments.md).
+For required tool versions and recommendations, see [development-environment.md](development-environment.md).
+
+For a verification checklist, connectivity commands, and expanded troubleshooting, see [development-environment-verification.md](development-environment-verification.md).
 
 ---
 
@@ -193,26 +195,7 @@ Follow this order each day:
 
 ## Troubleshooting
 
-### Port 5432 already in use
-
-Another PostgreSQL instance may be running. Either stop it or change `POSTGRES_PORT` in `.env` (e.g. `5433`) and update `SPRING_DATASOURCE_URL` accordingly.
-
-### Authentication failed for user
-
-Ensure `SPRING_DATASOURCE_PASSWORD` in `.env` matches `POSTGRES_PASSWORD`. If you changed the password after the first `docker compose up`, reset the volume:
-
-```bash
-docker compose down -v
-docker compose up -d
-```
-
-### Flyway migration failed
-
-Check logs for SQL errors. Do not use `spring.jpa.hibernate.ddl-auto=create` — schema is managed by Flyway only (`ddl-auto: validate`).
-
-### Maven not found
-
-Install Maven 3.9+ and ensure it is on your `PATH`, or use the Maven Wrapper when added to the project.
+See [development-environment-verification.md](development-environment-verification.md#common-troubleshooting-local-setup) for a full troubleshooting table.
 
 ---
 
@@ -231,6 +214,7 @@ Install Maven 3.9+ and ensure it is on your `PATH`, or use the Maven Wrapper whe
 
 ## Related Documentation
 
-* [development-environments.md](development-environments.md) — tool versions and recommendations
+* [development-environment.md](development-environment.md) — tool versions and recommendations
+* [development-environment-verification.md](development-environment-verification.md) — checklist and verification commands
 * [technology-stack.md](technology-stack.md) — approved stack
 * [project-roadmap.md](project-roadmap.md) — implementation phases
