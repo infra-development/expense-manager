@@ -2,7 +2,7 @@
 
 ## Java Version
 
-* Java 21
+* Java 17
 
 ---
 

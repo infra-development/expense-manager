@@ -1,0 +1,21 @@
+# Local secrets and overrides (see docs/local-development-setup.md)
+.env
+src/main/resources/application-local.yml
+
+# Build
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

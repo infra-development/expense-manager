@@ -12,7 +12,7 @@ All implementation decisions should follow this document unless explicitly updat
 
 Language:
 
-* Java 21
+* Java 17
 
 Framework:
 

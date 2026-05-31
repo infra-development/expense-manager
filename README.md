@@ -81,6 +81,21 @@ Important documents:
 * technology-stack.md
 * project-roadmap.md
 * decisions.md
+* development-environments.md
+* local-development-setup.md
+
+---
+
+## Local Development
+
+Quick start:
+
+1. Copy `.env.example` to `.env` and set your database password.
+2. Start PostgreSQL: `docker compose up -d`
+3. Load environment variables and run: `mvn spring-boot:run`
+4. Open Swagger UI: http://localhost:8080/swagger-ui.html
+
+See [docs/local-development-setup.md](docs/local-development-setup.md) for full instructions.
 
 ---
 

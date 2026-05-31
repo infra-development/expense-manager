@@ -1,0 +1,22 @@
+# Copy to application-local.yml for machine-specific settings (optional).
+# Prefer environment variables from .env for secrets.
+#
+#   cp application-local.yml.example application-local.yml
+#
+# application-local.yml is listed in .gitignore and must not be committed.
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/expense_manager}
+    username: ${SPRING_DATASOURCE_USERNAME:expense_manager}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    com.expensemanager: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.flywaydb: INFO

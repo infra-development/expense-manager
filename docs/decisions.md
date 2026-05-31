@@ -53,11 +53,11 @@ Status:
 
 Title:
 
-* Java 21
+* Java 17
 
 Decision:
 
-* Use Java 21.
+* Use Java 17.
 
 Reasoning:
 
@@ -86,7 +86,7 @@ Reasoning:
 
 * Modern Spring ecosystem.
 * Strong community support.
-* Good integration with Java 21.
+* Good integration with Java 17.
 
 Status:
 
