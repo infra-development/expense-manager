@@ -6,6 +6,7 @@ import com.expensemanager.identity.entity.User;
 import com.expensemanager.identity.repository.RefreshTokenRepository;
 import com.expensemanager.identity.security.JwtService;
 import com.expensemanager.identity.security.TokenHashService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,24 +18,13 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class RefreshTokenService {
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final JwtService jwtService;
     private final JwtProperties jwtProperties;
     private final TokenHashService tokenHashService;
-
-    public RefreshTokenService(
-            RefreshTokenRepository refreshTokenRepository,
-            JwtService jwtService,
-            JwtProperties jwtProperties,
-            TokenHashService tokenHashService
-    ) {
-        this.refreshTokenRepository = refreshTokenRepository;
-        this.jwtService = jwtService;
-        this.jwtProperties = jwtProperties;
-        this.tokenHashService = tokenHashService;
-    }
 
     /**
      * Creates a refresh token without device information.
@@ -77,9 +67,13 @@ public class RefreshTokenService {
     @Transactional(readOnly = true)
     public boolean isValid(String rawRefreshToken, RefreshToken refreshToken) {
 
-        return !refreshToken.isRevoked()
-                && refreshToken.getExpiresAt().isAfter(OffsetDateTime.now(ZoneOffset.UTC))
-                && jwtService.isRefreshTokenValid(rawRefreshToken);
+        boolean revoked = refreshToken.isRevoked();
+        boolean expired = refreshToken.getExpiresAt().isBefore(OffsetDateTime.now(ZoneOffset.UTC));
+        boolean jwtValid = jwtService.isRefreshTokenValid(rawRefreshToken);
+
+        return !revoked
+                && !expired
+                && jwtValid;
     }
 
     public void revoke(RefreshToken refreshToken) {
@@ -99,9 +93,10 @@ public class RefreshTokenService {
         refreshTokenRepository.saveAll(tokens);
     }
 
-    public void deleteExpiredTokens() {
+    @Transactional
+    public int deleteExpiredTokens() {
 
-        refreshTokenRepository.deleteByExpiresAtBefore(
+        return refreshTokenRepository.deleteByExpiresAtBefore(
                 OffsetDateTime.now(ZoneOffset.UTC)
         );
     }

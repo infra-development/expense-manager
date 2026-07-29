@@ -79,6 +79,7 @@ public class JwtService {
             parseRefreshToken(token);
             return true;
         } catch (Exception ex) {
+            ex.printStackTrace();
             return false;
         }
     }

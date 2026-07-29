@@ -30,3 +30,7 @@ springdoc:
 
 logging:
   config: classpath:logback-spring.xml
+
+expense-manager:
+  scheduler:
+    refresh-token-cleanup-cron: "0 30 0 * * *"

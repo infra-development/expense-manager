@@ -1,6 +1,7 @@
 package com.expensemanager.config;
 
 import com.expensemanager.identity.security.JwtAuthenticationFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,15 +41,25 @@ public class SecurityConfig {
 
                 .logout(AbstractHttpConfigurer::disable)
 
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint((request, response, authException) ->
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                        .accessDeniedHandler((request, response, accessDeniedException) ->
+                                response.sendError(HttpServletResponse.SC_FORBIDDEN))
+                )
+
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers(
-                                "/api/v1/auth/**",
+                                "/api/v1/auth/register",
+                                "/api/v1/auth/login",
+                                "/api/v1/auth/refresh",
+                                "/api/v1/auth/logout",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/error")
-                        .permitAll()
+                                "/error"
+                        ).permitAll()
 
                         .requestMatchers(HttpMethod.OPTIONS, "/**")
                         .permitAll()
