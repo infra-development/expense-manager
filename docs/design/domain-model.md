@@ -1,5 +1,34 @@
 # Phase 2 — Domain Model and Database Design
 
+## Current Implementation Status
+
+### Implemented
+
+- Identity
+- Refresh Tokens
+- Authentication
+- JWT
+- Shared Infrastructure
+
+### Database Implemented
+
+- Users
+- Refresh Tokens
+- Families
+- Family Members
+- Accounts
+- Categories
+- Transactions
+- Budgets
+
+### Business Logic Planned
+
+- Family Management
+- Ledger
+- Category
+- Budget
+- Reporting
+
 ## Document status
 
 | Item | Value |
